@@ -36,8 +36,8 @@ const app = http.createServer((request, response) => {
     const short = database.list()
       .filter((sh) => (sh.name === linkKey) || (sh.id === linkKey))[0];
     
-    short && response.writeHead(302, {
-      "Location": short.link ?? "https://github.com/arnaldoucuassapi"
+    response.writeHead(302, {
+      "Location": short ? short.link : "https://github.com/arnaldoucuassapi"
     });
 
     return response.end();
