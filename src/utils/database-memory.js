@@ -1,9 +1,16 @@
+const { randomNumber } = require("./random-number");
 
 class DatabaseInMemory {
   #shorts = new Map();
 
   add(short) {
-    this.#shorts.set(short);
+    let id = randomNumber();
+
+    while (this.#shorts.has(id)) {
+      id = randomNumber();
+    }
+
+    this.#shorts.set(id, short);
   }
 
   list() {
