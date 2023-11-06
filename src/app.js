@@ -5,6 +5,8 @@ const port = 3333;
 const database = new DatabaseInMemory();
 
 const app = http.createServer((request, response) => {
+  response.setHeader("Access-Control-Allow-Origin", "*");
+  
   const method = request.method;
   const route = request.url;
   
